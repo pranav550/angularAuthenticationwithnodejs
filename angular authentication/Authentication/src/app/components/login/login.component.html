@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h2 id="title">Login form</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email" name="email" autocomplete="off">
+            <div class="red" *ngIf="loginForm.controls['email'].errors?.required && loginForm.controls['email'].touched">
+                Email is required
+            </div>
+            <div class="red" *ngIf="loginForm.controls['email'].errors?.email">
+                Email is invalid
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter password" name="password">
+            <div class="red" *ngIf="loginForm.controls['password'].errors?.required && loginForm.controls['password'].touched">
+                Password is required
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>
